@@ -1,0 +1,18 @@
+---
+#this yaml file is use for setup the main variable for the program 
+# Make all changes in here !
+database:
+    databaseIP: 10.225.246.63
+    serverIP: 10.225.246.37
+    dbPort: 8086
+    dbUsername: admin
+    dbPassword: supersecretpassword
+    dbName: telegraf
+
+IPMI:
+    username: admin
+    password: mare
+
+ServerTempSetup:
+    maxTemp: 37
+    minTemp: 32
