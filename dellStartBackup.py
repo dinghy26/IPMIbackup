@@ -52,11 +52,11 @@ get_status = IPMI_LOGIN + IPMI_GET_STATUS
 split_status = os.popen(get_status).read()
 
 
-
-if HOURSTR == str(22):
+# the hour is in ZULU time. make sure you do the convertion. 
+if HOURSTR == str(21):
     os.system(IPMI_LOGIN+IPMI_POWER_ON)
 
-if HOURSTR == str(23):
+if HOURSTR == str(02):
     os.system(IPMI_LOGIN+IPMI_POWER_OFF)
 
 else:
