@@ -14,8 +14,8 @@ ENV TZ="America/New_York"
 
 
 # Add the cron job
-RUN crontab -l | { cat; echo "0 0 * * * bash /usr/app/src/dellStartBackup.py"; } | crontab -
-RUN crontab -l | { cat; echo "0 5 * * * bash /usr/app/src/dellStartBackup.py"; } | crontab -
+RUN crontab -l | { cat; echo "0 21 * * * bash /usr/app/src/dellStartBackup.py"; } | crontab -
+RUN crontab -l | { cat; echo "0 2 * * * bash /usr/app/src/dellStartBackup.py"; } | crontab -
 
 WORKDIR /usr/app/src
 
