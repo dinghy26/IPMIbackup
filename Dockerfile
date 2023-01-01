@@ -7,7 +7,6 @@ RUN apt install python3 -y
 RUN apt install python3-pip -y
 RUN apt install ipmitool -y
 RUN apt install nano -y
-RUN pip install pyYAML
 RUN apt install cron -y
 
 ENV TZ="America/New_York"
@@ -29,7 +28,6 @@ RUN crontab /etc/cron.d/crontab
 WORKDIR /usr/app/src
 
 COPY  dellStartBackup.py ./
-COPY  dellSetUp.yaml ./
 
 ENTRYPOINT [ "cron", "-f" ]
 
