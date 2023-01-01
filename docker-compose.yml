@@ -1,0 +1,10 @@
+version: '3'
+services:
+   dellpi:
+     image: dinghy26/dellipmi2
+     environment:
+          MY_IP : ${MY_IP} #your  idrac ip
+          MY_USER : ${MY_USER} # idrac username
+          MY_PASS : ${MY_PASS} # idrac password
+          START : ${START} # Server start 
+          STOP : ${STOP} # Server stop
