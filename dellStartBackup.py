@@ -33,7 +33,8 @@ IPMI_USERNAME = setup_data.get('IPMI').get('username')
 IPMI_PASSWORD = setup_data.get('IPMI').get('password')
 
 NOW = datetime.now().time() #time of the day
-HOURSTR = str(NOW)[:2] # first 2 number of the hour 
+HOURSTRi= str(NOW)[:2] # first 2 number of the hour
+HOURSTRf= str(NOW)[1] # this is to fix the leading 0 at 02 am
 #add .py after ipmitool for venv remove to run on regular containers
 IPMI_LOGIN = ("ipmitool -I lanplus -H %s -U %s -P %s ") % (SERVER_IP,IPMI_USERNAME, IPMI_PASSWORD)
 
@@ -53,13 +54,14 @@ split_status = os.popen(get_status).read()
 
 
 # the hour is in ZULU time. make sure you do the convertion. 
-if HOURSTR == str(21):
+if HOURSTRi == str(21):
     os.system(IPMI_LOGIN+IPMI_POWER_ON)
 
-if HOURSTR == str(02):
+if HOURSTRf == str(2):
     os.system(IPMI_LOGIN+IPMI_POWER_OFF)
 
 else:
     print(str(split_status))
+    print (HOURSTRf)
 
 
