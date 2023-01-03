@@ -8,3 +8,5 @@ services:
           MY_PASS : ${MY_PASS} # idrac password
           START : ${START} # Server start 
           STOP : ${STOP} # Server stop
+          #CRON_START :  22
+          #CRON_STOP :  23

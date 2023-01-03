@@ -1,0 +1,6 @@
+SHELL=/bin/bash
+PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
+
+* * * * * /bin/bash /usr/app/src/job.sh >> /var/log/cron.log 2>&1
+@reboot python3 /usr/app/src/dellStartBackup.py >> /var/log/cron.log 2>&1
+* * * * * echo "hello tab" >> /var/log/cron.log 2>&1

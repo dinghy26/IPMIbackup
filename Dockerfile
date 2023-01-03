@@ -1,5 +1,5 @@
-FROM  ubuntu:latest
-RUN /bin/bash -c 'source $HOME/.bashrc; '
+FROM  debian
+#RUN /bin/bash -c 'source $HOME/.bashrc; '
 
 RUN apt update
 RUN apt upgrade -y
@@ -11,25 +11,26 @@ RUN apt install cron -y
 
 ENV TZ="America/New_York"
 
-# Add the cron job
-# RUN crontab -l | { cat; echo "0 21 * * * /usr/bin/python3 /usr/app/src/dellStartBackup.py"; } | crontab -
-# RUN crontab -l | { cat; echo "0 2 * * * /usr/bin/python3 /usr/app/src/dellStartBackup.py"; } | crontab -
-
 # Adding crontab to the appropriate location
-ADD crontab /etc/cron.d/crontab
+#ADD cronjob /etc/cron.d/cronjob
 
 # Giving permission to crontab file
-RUN chmod 0644 /etc/cron.d/crontab
+#RUN chmod 0644 /etc/cron.d/cronjob
 
 # Running crontab
-RUN crontab /etc/cron.d/crontab
+#RUN crontab /etc/cron.d/cronjob
 
+#RUN touch /var/log/cron.log
+#CMD cron && tail -f /var/log/cron.log
 
 WORKDIR /usr/app/src
 
-COPY  dellStartBackup.py ./
+COPY dellStartStop.py ./
+#COPY  dellStartBackup.py ./
+#COPY job.sh ./
 
-ENTRYPOINT [ "cron", "-f" ]
+#RUN chmod +x job.sh
 
-
-
+#ENTRYPOINT [ "cron", "-f"]
+#ENTRYPOINT [ "python3", "./dellStartBackup.py"]
+ENTRYPOINT [ "/usr/bin/python3", "./dellStartStop.py"]
