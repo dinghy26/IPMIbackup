@@ -55,14 +55,13 @@ def Write_To_File(fileMessage, filename, method):
 # ipmitool commands variables
 IPMI_GET_STATUS = "chassis status"
 IPMI_POWER_ON = "power on"
-IPMI_POWER_OFF = "power off"
+IPMI_POWER_OFF = "chassis power soft"
 
-
+#Status  command
 get_status = IPMI_LOGIN + IPMI_GET_STATUS
-
 split_status = os.popen(get_status).read()
 
-# the hour is in ZULU time. make sure you do the convertion. 
+# the hour is in TZ= America/New_York on the CT
 if HOURSTRi == str(TIME_START):
     os.system(IPMI_LOGIN+IPMI_POWER_ON)
 
@@ -70,6 +69,6 @@ if HOURSTRf == str(TIME_STOP):
     os.system(IPMI_LOGIN+IPMI_POWER_OFF)
 
 else :
-    # al l debug print erase if you don't need it
+    # all debug print erase if you don't need it
     print(" ")
     print(str(split_status))
