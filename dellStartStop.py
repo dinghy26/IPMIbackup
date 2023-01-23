@@ -30,8 +30,8 @@ CRON_FILE_PATH = "/etc/cron.d/crontab"
 
 NOW = datetime.now().time() #time of the day
 
-HOURSTRi= str(NOW)[:2] # first 2 number of the hour
-HOURSTRf= str(NOW)[1] # this is to fix the leading 0 at 02 am
+HOURSTRi= str(NOW)[1] # this is to fix the leading 0 at 02
+HOURSTRf= str(NOW)[:2]  # first 2 number of the hour
 
 setup = ("Variable are as follow:\n SERVER IP : %s \n\n USERNAME : %s \n PASSWORD : %s \n START TIME : %s \n STOP TIME : %s \n") % (str(SERVER_IP), str(IPMI_USERNAME), str(IPMI_PASSWORD), str(TIME_START), str(TIME_STOP))
 print (setup)
