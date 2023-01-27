@@ -9,5 +9,5 @@
 ---
 If any questions feel free to ask.
 
-**Se Abla espa~oll**!!! si tienen cualquier pregunta. 
+**Se abla espanol**!!! si tienen cualquier pregunta. 
 
